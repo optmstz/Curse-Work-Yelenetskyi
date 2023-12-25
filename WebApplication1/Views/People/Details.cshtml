@@ -1,0 +1,166 @@
+﻿@model WebApplication1.Models.Person
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center d-inline-block">Details</h1>
+
+<h4 class="text-center d-inline-block">Person</h4>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit" class="shadow p-3 mb-5 bg-white rounded">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PersonId" />
+
+            <div class="row">
+                <!-- Column 1 -->
+                <div class="col-md-6 mb-4">
+                    <label asp-for="PersonName" class="control-label"></label>
+                    <input asp-for="PersonName" class="form-control" readonly />
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label asp-for="PersonSurname" class="control-label"></label>
+                    <input asp-for="PersonSurname" class="form-control" readonly />
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label asp-for="PersonSex" class="control-label"></label>
+
+                    <div class="form-check">
+                        <input type="radio" asp-for="PersonSex" class="form-check-input" value="Male" disabled />
+                        <label class="form-check-label">Male</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="radio" asp-for="PersonSex" class="form-check-input" value="Female" disabled />
+                        <label class="form-check-label">Female</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <label asp-for="PersonDateOfBirth" class="control-label"></label>
+                    <input asp-for="PersonDateOfBirth" class="form-control" type="date" readonly />
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label asp-for="PersonNationality" class="control-label"></label>
+                    <input asp-for="PersonNationality" class="form-control" readonly />
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label asp-for="RNKNumber" class="control-label"></label>
+                    <input asp-for="RNKNumber" class="form-control" readonly />
+                </div>
+            </div>
+
+           <hr />
+            <!-- Registration Place -->
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label asp-for="RegistrationPlace.Country" class="control-label">Registration Country</label>
+                    <input asp-for="RegistrationPlace.Country" class="form-control" readonly />
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label asp-for="RegistrationPlace.Region" class="control-label">Registration Region</label>
+                    <input asp-for="RegistrationPlace.Region" class="form-control" readonly />
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label asp-for="RegistrationPlace.City" class="control-label">Registration City</label>
+                    <input asp-for="RegistrationPlace.City" class="form-control" readonly />
+                </div>
+            </div>
+
+            <!-- Birth Place -->
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label asp-for="BirthPlace.Country" class="control-label">Birth Country</label>
+                    <input asp-for="BirthPlace.Country" class="form-control" readonly />
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label asp-for="BirthPlace.Region" class="control-label">Birth Region</label>
+                    <input asp-for="BirthPlace.Region" class="form-control" readonly />
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label asp-for="BirthPlace.City" class="control-label">Birth City</label>
+                    <input asp-for="BirthPlace.City" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <a asp-action="Create" asp-controller="PersonPassports" asp-route-personId="@Model.PersonId" asp-route-returnUrl="@Context.Request.Path" class="btn btn-primary">Add Passport</a>
+                <a asp-action="Index" asp-controller="People" class="btn btn-secondary">Back to Persons</a>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        @if (Model.PersonPassport != null)
+        {
+            <form asp-action="" class="shadow p-3 mb-5 bg-white rounded">
+                <div class="row mb-4">
+                <!-- Photograph Block -->
+                <div class="col-md-6 mx-auto text-center">
+                @*     <img src="" alt="Photograph" class="img-fluid bg-primary" style="max-width: 150px; height: auto;" /> *@
+                    <div class="bg-secondary" style="width:150px; height: 175px;"></div>
+                </div>
+
+
+                <!-- Name and Surname Block -->
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <label asp-for="PersonName" class="control-label">Person Name</label>
+                            <input asp-for="PersonName" class="form-control" readonly />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <label asp-for="PersonSurname" class="control-label">Person Surname</label>
+                            <input asp-for="PersonSurname" class="form-control" readonly />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label asp-for="PersonPassport.Passport_Number" class="control-label">Passport Number</label>
+                    <input asp-for="PersonPassport.Passport_Number" class="form-control" readonly />
+                </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label asp-for="PersonPassport.Authority" class="control-label">Authority</label>
+                        <input asp-for="PersonPassport.Authority" class="form-control" readonly />
+                    </div>
+            </div>
+
+            <!-- Additional Passport Fields -->
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label asp-for="PersonPassport.Date_of_Issue" class="control-label">Date of Issue</label>
+                    <input asp-for="PersonPassport.Date_of_Issue" class="form-control" readonly />
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <label asp-for="PersonPassport.Date_of_Expiry" class="control-label">Date of Expiry</label>
+                    <input asp-for="PersonPassport.Date_of_Expiry" class="form-control" readonly />
+                </div>
+
+
+                 <div class="col-md-6 mb-4 align-self-end ml-auto">
+                     <a asp-action="Delete" asp-controller="PersonPassports" asp-route-id="@Model.PersonPassport.PersonPassportId" asp-route-returnUrl="@Url.Action("Details", "People", new { id = Model.PersonId })" class="btn btn-danger">Delete</a>
+                 </div>
+
+            </div>
+        </form>
+        }
+    </div>
+</div>
+

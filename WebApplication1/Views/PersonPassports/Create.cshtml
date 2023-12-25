@@ -1,0 +1,55 @@
+﻿@model WebApplication1.Models.PersonPassports
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center d-inline-block">Create</h1>
+
+<h4 class="text-center d-inline-block">Passport</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create" class="shadow p-3 mb-5 bg-white rounded">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label asp-for="Passport_Number" class="control-label"></label>
+                    <input asp-for="Passport_Number" class="form-control" />
+                    <span asp-validation-for="Passport_Number" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <label asp-for="Authority" class="control-label"></label>
+                    <input asp-for="Authority" class="form-control" />
+                    <span asp-validation-for="Authority" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label asp-for="Date_of_Issue" class="control-label"></label>
+                    <input asp-for="Date_of_Issue" class="form-control" />
+                    <span asp-validation-for="Date_of_Issue" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label asp-for="Date_of_Expiry" class="control-label"></label>
+                    <input asp-for="Date_of_Expiry" class="form-control" />
+                    <span asp-validation-for="Date_of_Expiry" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+                <input type="hidden" name="personId" value="@ViewData["PersonId"]" />
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Details" asp-controller="People" asp-route-id="@ViewData["PersonId"]"  class="btn btn-secondary">Back to Details</a>
+             </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

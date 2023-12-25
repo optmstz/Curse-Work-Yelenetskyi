@@ -1,0 +1,48 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" id="orderStatisticLink" asp-action="Index" asp-controller="AdminPanel">Order Statistic</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="passportServicesLink" data-page="/AdminPanel/Index">Passport Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="employeesLink" data-page="/Employees">Employees</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="mainContent"></main>
+    </div>
+</div>
+
+<!-- Підключення jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Підключення Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Скрипт вашого коду -->
+<script>
+      $(document).ready(function () {
+        $(".nav-link").click(function (e) {
+            e.preventDefault();
+
+            $(".nav-link").removeClass("active");
+            $(this).addClass("active");
+
+            var pagePath = $(this).data("page");
+
+            // Викликаємо AJAX-запит для отримання вмісту сторінки
+            $.get(pagePath, function (data) {
+                // Вставляємо отриманий вміст в #mainContent
+                $("#mainContent").html(data);
+            });
+        });
+    });
+
+</script>

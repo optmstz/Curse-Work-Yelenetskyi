@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplication1.Models.PassportApplication>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Service</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfSubmission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfExecution)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.EmployeesId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonPassport.Passport_Number)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                        @Html.DisplayFor(modelItem => item.DateOfSubmission)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.DateOfExecution)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Employees.EmployeeName) 
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.PersonPassport.Passport_Number) 
+                </td>
+
+                <td>
+                     @if (String.IsNullOrEmpty(item.EmployeesId?.ToString()))
+                     {
+                        <a asp-action="Take" asp-route-id="@item.PassportApplicationId" class="btn btn-primary">Take</a>
+                     }
+                     else if (item.ApplicationStatus != "Completed")
+                     {
+                        <a asp-action="Done" asp-route-id="@item.PassportApplicationId" class="btn btn-success">Done</a>
+                     }
+                    <a asp-action="Details" asp-route-id="@item.PassportApplicationId" class="btn btn-secondary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.PassportApplicationId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+    </tbody>
+
+</table>

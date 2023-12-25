@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApplication1.Models.Person>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Person</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+
+@await Html.PartialAsync("_SearchFormPatial", ViewData["CurrentSort"])
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayName("Name")</a>
+            </th>
+            <th scope="col">
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SurnameSortParm"]">@Html.DisplayName("Surname")</a>
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.PersonSex)
+            </th>
+            <th scope="col">
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateOfBirthSortParm"]">@Html.DisplayName("Date of Birth")</a>
+            </th>
+
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.PersonNationality)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.RNKNumber)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.PersonPassportId)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.PersonName)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.PersonSurname)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.PersonSex)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.PersonDateOfBirth)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.PersonNationality)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.RNKNumber)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.PersonPassportId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PersonId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.PersonId" class="btn btn-secondary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.PersonId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_PagingPartial", Model)

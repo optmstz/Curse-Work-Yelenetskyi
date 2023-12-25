@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication1.Models.PersonPassports>
+
+@{
+    ViewData["Title"] = "Passports";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Passport_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_of_Issue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_of_Expiry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passport_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Authority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_of_Issue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_of_Expiry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.PersonId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PersonPassportId" class="btn btn-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.PersonPassportId" class="btn btn-secondary">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.PersonPassportId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

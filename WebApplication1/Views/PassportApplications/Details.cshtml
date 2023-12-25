@@ -1,0 +1,55 @@
+﻿@model WebApplication1.Models.PassportApplication
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center d-inline-block">Details</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit" class="shadow p-3 mb-5 bg-white rounded">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PassportApplicationId" />
+
+            <div class="row">
+                <!-- DateOfSubmission -->
+                <div class="form-group mb-4">
+                    <label asp-for="DateOfSubmission" class="control-label"></label>
+                    <input asp-for="DateOfSubmission" class="form-control" readonly />
+                </div>
+
+                <!-- DateOfExecution -->
+                <div class="form-group mb-4">
+                    <label asp-for="DateOfExecution" class="control-label"></label>
+                    <input asp-for="DateOfExecution" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Employees -->
+                <div class="form-group mb-4">
+                    <label asp-for="Employees" class="control-label"></label>
+                    <input asp-for="Employees.EmployeesId" class="form-control" readonly />
+                </div>
+
+                <!-- PassportServices -->
+                <div class="form-group mb-4">
+                    <label asp-for="PassportServices" class="control-label"></label>
+                    <input asp-for="PassportServices.ServiceId" class="form-control" readonly />
+                </div>
+
+                <!-- PersonPassport -->
+                <div class="form-group mb-4">
+                    <label asp-for="PersonPassport" class="control-label"></label>
+                    <input asp-for="PersonPassport.PersonPassportId" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

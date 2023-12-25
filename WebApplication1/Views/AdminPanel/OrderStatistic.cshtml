@@ -1,0 +1,34 @@
+﻿<div>
+    <canvas id="applicationsChart" width="400" height="200"></canvas>
+</div>
+
+<script>
+    var completedCount = Math.floor(@ViewData["CompletedCount"]);
+    var awaitingAcceptanceCount = Math.floor(@ViewData["AwaitingAcceptanceCount"]);
+
+    var servicesByDayLabels = @Html.Raw(Json.Serialize(ViewBag.ServicesByDayLabels));
+    var servicesByDayData = @Html.Raw(Json.Serialize(ViewBag.ServicesByDayData));
+
+    // Chart.js initialization for services by day
+    var ctx = document.getElementById('applicationsChart').getContext('2d');
+    var applicationsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: servicesByDayLabels,
+            datasets: [{
+                label: 'Sum of Services by Day',
+                data: servicesByDayData,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

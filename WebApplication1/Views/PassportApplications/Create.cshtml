@@ -1,0 +1,39 @@
+﻿@model WebApplication1.Models.PassportApplication
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center d-inline-block">Create</h1>
+
+<h4 class="text-center d-inline-block">Application</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create" class="shadow p-3 mb-5 bg-white rounded">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-4">
+                <label asp-for="ServiceId" class="control-label"></label>
+                <select asp-for="ServiceId" class="form-control" asp-items='@(ViewData["ServiceTypes"] as IEnumerable<SelectListItem>)'></select>
+            </div>
+
+            
+            <div class="form-group mb-4">
+                <label asp-for="PersonPassportId" class="control-label"></label>
+                <select asp-for="PersonPassportId" class="form-control" asp-items="ViewBag.PersonPassportId"></select>
+            </div>
+
+            <div class="form-group mb-4">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

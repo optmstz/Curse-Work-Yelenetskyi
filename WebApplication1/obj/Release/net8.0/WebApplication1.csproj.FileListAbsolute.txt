@@ -1,0 +1,8 @@
+D:\zhytomur politeh\test\WebApplication1\WebApplication1\obj\Release\net8.0\WebApplication1.csproj.AssemblyReference.cache
+D:\zhytomur politeh\test\WebApplication1\WebApplication1\obj\Release\net8.0\WebApplication1.GeneratedMSBuildEditorConfig.editorconfig
+D:\zhytomur politeh\test\WebApplication1\WebApplication1\obj\Release\net8.0\WebApplication1.AssemblyInfoInputs.cache
+D:\zhytomur politeh\test\WebApplication1\WebApplication1\obj\Release\net8.0\WebApplication1.AssemblyInfo.cs
+D:\zhytomur politeh\test\WebApplication1\WebApplication1\obj\Release\net8.0\WebApplication1.csproj.CoreCompileInputs.cache
+D:\zhytomur politeh\test\WebApplication1\WebApplication1\obj\Release\net8.0\WebApplication1.MvcApplicationPartsAssemblyInfo.cache
+D:\zhytomur politeh\test\WebApplication1\WebApplication1\obj\Release\net8.0\WebApplication1.RazorAssemblyInfo.cache
+D:\zhytomur politeh\test\WebApplication1\WebApplication1\obj\Release\net8.0\WebApplication1.RazorAssemblyInfo.cs

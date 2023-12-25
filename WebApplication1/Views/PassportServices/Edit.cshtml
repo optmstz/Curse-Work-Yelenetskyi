@@ -1,0 +1,44 @@
+﻿@model WebApplication1.Models.PassportServices
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center d-inline-block">Edit</h1>
+
+<h4 class="text-center d-inline-block">Passport Services</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit" class="shadow p-3 mb-5 bg-white rounded">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ServiceId" />
+
+            <div class="form-group mb-4">
+                <label asp-for="ServiceType" class="control-label"></label>
+                <input asp-for="ServiceType" class="form-control" />
+                <span asp-validation-for="ServiceType" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="ServicePrice" class="control-label"></label>
+                <input asp-for="ServicePrice" class="form-control" />
+                <span asp-validation-for="ServicePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="ExecutionDate" class="control-label"></label>
+                <input asp-for="ExecutionDate" class="form-control" />
+                <span asp-validation-for="ExecutionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-4">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
